@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-//проверка на число
+// проверка на число
 int isNumber(const char* str, int len) {
     if (len == 0) return 0;
     
@@ -18,7 +18,7 @@ int isNumber(const char* str, int len) {
     return 1;
 }
 
-//поиск максимальных длин ячеек и количества строк
+// поиск максимальных длин ячеек и количества строк
 void findMaxLengths(FILE* file, int* max_len, int num_cols) {
     int current_len = 0;
     int col = 0;
@@ -40,11 +40,10 @@ void findMaxLengths(FILE* file, int* max_len, int num_cols) {
 }
 
 void printCell(FILE* out, char* data, int lenCell, int align) {
-    fprintf(out, "%s", "│");
+    fprintf(out, "%s", "|");
     if (align) {
         fprintf(out, " %*s ", lenCell, data);
-    }
-    else{
+    } else{
         fprintf(out, " %-*s ", lenCell, data);
     }
 }
@@ -54,7 +53,7 @@ void printRow(FILE* out, char* line, int numCols, int* colWidths) {
     int pos = 0;
 
     while (col < numCols && line[pos] != '\0') {
-        char buffer[256] = {0}; 
+        char buffer[256] = {0};
         int bufPos = 0;
         
         while (line[pos] != ';' && line[pos] != '\n' && line[pos] != '\0') {
@@ -133,7 +132,7 @@ int main() {
         return 1;
     } 
     
-    //количество столбцов в первой строке
+    // количество столбцов в первой строке
     int ch;
     int count_col = 1;
     int count_row = 0;
@@ -143,7 +142,7 @@ int main() {
             count_col++;
         }
     }
-    count_row++; 
+    count_row++;
     
     while ((ch = fgetc(file)) != EOF) {
         if (ch == '\n') {
