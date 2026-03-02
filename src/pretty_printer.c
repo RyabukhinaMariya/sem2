@@ -176,8 +176,6 @@ int main() {
         
         row_num++;
     }
-    
-
 
     free(col_widths);
     fclose(file);
