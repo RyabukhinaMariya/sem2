@@ -22,9 +22,9 @@ int isNumber(const char *str, int len)
 }
 
 // поиск максимальных длин ячеек
-void findMaxLengths(FILE *file, int *max_len, int numCols)
+void findMaxLengths(FILE *file, int *maxLen, int numCols)
 {
-    int current_len = 0;
+    int currentLen = 0;
     int col = 0;
     int ch;
 
@@ -32,13 +32,13 @@ void findMaxLengths(FILE *file, int *max_len, int numCols)
 
     while ((ch = fgetc(file)) != EOF) {
         if (ch == ';' || ch == '\n') {
-            if (current_len > max_len[col]) {
-                max_len[col] = current_len;
+            if (currentLen > maxLen[col]) {
+                maxLen[col] = currentLen;
             }
-            current_len = 0;
+            currentLen = 0;
             col = (ch == '\n') ? 0 : (col + 1) % numCols;
         } else {
-            current_len++;
+            currentLen++;
         }
     }
 }
@@ -112,18 +112,18 @@ int main()
     // подсчет столбцов в первой строке
     int ch;
     int countCol = 1;
-    int count_row = 0;
+    int countRow = 0;
 
     while ((ch = fgetc(file)) != '\n' && ch != EOF) {
         if (ch == ';') {
             countCol++;
         }
     }
-    count_row++;
+    countRow++;
 
     while ((ch = fgetc(file)) != EOF) {
         if (ch == '\n') {
-            count_row++;
+            countRow++;
         }
     }
 
@@ -140,7 +140,7 @@ int main()
 
     printLine(out, colWidths, countCol);
 
-    int row_num = 0;
+    int rowNum = 0;
     while (fgets(line, sizeof(line), file) != NULL) {
         line[strcspn(line, "\n")] = '\0';
 
@@ -150,11 +150,11 @@ int main()
 
         printRow(out, line, countCol, colWidths);
 
-        if (row_num < count_row - 1) {
+        if (rowNum < countRow - 1) {
             printLine(out, colWidths, countCol);
         }
 
-        row_num++;
+        rowNum++;
     }
 
     printLine(out, colWidths, countCol);
