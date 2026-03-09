@@ -22,7 +22,7 @@ int isNumber(const char *str, int len)
 }
 
 // поиск максимальных длин ячеек
-void findMaxLengths(FILE *file, int *max_len, int num_cols)
+void findMaxLengths(FILE *file, int *max_len, int numCols)
 {
     int current_len = 0;
     int col = 0;
@@ -36,7 +36,7 @@ void findMaxLengths(FILE *file, int *max_len, int num_cols)
                 max_len[col] = current_len;
             }
             current_len = 0;
-            col = (ch == '\n') ? 0 : (col + 1) % num_cols;
+            col = (ch == '\n') ? 0 : (col + 1) % numCols;
         } else {
             current_len++;
         }
@@ -53,12 +53,12 @@ void printCell(FILE *out, char *data, int lenCell, int align)
     }
 }
 
-void printRow(FILE *out, char *line, int numCols, int *colWidths)
+void printRow(FILE *out, char *line, int numCol, int *colWidths)
 {
     int col = 0;
     int pos = 0;
 
-    while (col < numCols && line[pos] != '\0') {
+    while (col < numCol && line[pos] != '\0') {
         char buffer[256] = {0};
         int bufPos = 0;
 
@@ -80,11 +80,11 @@ void printRow(FILE *out, char *line, int numCols, int *colWidths)
     fprintf(out, "|\n");
 }
 
-void printLine(FILE *out, int *colWidths, int numCols)
+void printLine(FILE *out, int *colWidths, int numCol)
 {
     fprintf(out, "+");
 
-    for (int i = 0; i < numCols; ++i) {
+    for (int i = 0; i < numCol; ++i) {
         for (int j = 0; j < colWidths[i] + 2; ++j) {
             fprintf(out, "-");
         }
@@ -111,12 +111,12 @@ int main()
 
     // подсчет столбцов в первой строке
     int ch;
-    int count_col = 1;
+    int countCol = 1;
     int count_row = 0;
 
     while ((ch = fgetc(file)) != '\n' && ch != EOF) {
         if (ch == ';') {
-            count_col++;
+            countCol++;
         }
     }
     count_row++;
@@ -127,18 +127,18 @@ int main()
         }
     }
 
-    int *col_widths = malloc(count_col * sizeof(int));
-    for (int i = 0; i < count_col; ++i) {
-        col_widths[i] = 0;
+    int *colWidths = malloc(countCol * sizeof(int));
+    for (int i = 0; i < countCol; ++i) {
+        colWidths[i] = 0;
     }
 
-    findMaxLengths(file, col_widths, count_col);
+    findMaxLengths(file, colWidths, countCol);
 
     rewind(file);
 
     char line[1024];
 
-    printLine(out, col_widths, count_col);
+    printLine(out, colWidths, countCol);
 
     int row_num = 0;
     while (fgets(line, sizeof(line), file) != NULL) {
@@ -148,18 +148,18 @@ int main()
             continue;
         }
 
-        printRow(out, line, count_col, col_widths);
+        printRow(out, line, countCol, colWidths);
 
         if (row_num < count_row - 1) {
-            printLine(out, col_widths, count_col);
+            printLine(out, colWidths, countCol);
         }
 
         row_num++;
     }
 
-    printLine(out, col_widths, count_col);
+    printLine(out, colWidths, countCol);
 
-    free(col_widths);
+    free(colWidths);
     fclose(file);
     fclose(out);
 
