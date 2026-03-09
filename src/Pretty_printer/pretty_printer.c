@@ -3,7 +3,8 @@
 #include <string.h>
 
 // проверка на число
-int isNumber(const char *str, int len) {
+int isNumber(const char *str, int len)
+{
     if (len == 0)
         return 0;
 
@@ -21,7 +22,8 @@ int isNumber(const char *str, int len) {
 }
 
 // поиск максимальных длин ячеек
-void findMaxLengths(FILE *file, int *max_len, int num_cols) {
+void findMaxLengths(FILE *file, int *max_len, int num_cols)
+{
     int current_len = 0;
     int col = 0;
     int ch;
@@ -41,7 +43,8 @@ void findMaxLengths(FILE *file, int *max_len, int num_cols) {
     }
 }
 
-void printCell(FILE *out, char *data, int lenCell, int align) {
+void printCell(FILE *out, char *data, int lenCell, int align)
+{
     fprintf(out, "|");
     if (align) {
         fprintf(out, " %*s ", lenCell, data);
@@ -50,7 +53,8 @@ void printCell(FILE *out, char *data, int lenCell, int align) {
     }
 }
 
-void printRow(FILE *out, char *line, int numCols, int *colWidths) {
+void printRow(FILE *out, char *line, int numCols, int *colWidths)
+{
     int col = 0;
     int pos = 0;
 
@@ -76,7 +80,8 @@ void printRow(FILE *out, char *line, int numCols, int *colWidths) {
     fprintf(out, "|\n");
 }
 
-void printLine(FILE *out, int *colWidths, int numCols) {
+void printLine(FILE *out, int *colWidths, int numCols)
+{
     fprintf(out, "+");
 
     for (int i = 0; i < numCols; ++i) {
@@ -89,7 +94,8 @@ void printLine(FILE *out, int *colWidths, int numCols) {
     fprintf(out, "\n");
 }
 
-int main() {
+int main()
+{
     FILE *file = fopen("input.csv", "r");
     if (file == NULL) {
         printf("input file not found\n");
