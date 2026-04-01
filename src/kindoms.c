@@ -169,7 +169,6 @@ int main() {
     
     fclose(file);
     
-    // Массив принадлежности городов (0 - не распределён, иначе номер государства)
     int* owner = (int*)calloc(n + 1, sizeof(int));
     
     int** states = (int**)malloc((k + 1) * sizeof(int*));
