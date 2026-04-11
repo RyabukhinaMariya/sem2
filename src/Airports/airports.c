@@ -193,13 +193,11 @@ Node* deleteNode(Node* root, char* code) {
                 root = NULL;
             }
             else {
-                // Copy data safely
                 strncpy(root->iataCode, temp->iataCode, 3);
                 root->iataCode[3] = '\0';
                 strncpy(root->name, temp->name, 1023);
                 root->name[1023] = '\0';
                 
-                // Copy children
                 root->left = temp->left;
                 root->right = temp->right;
                 root->height = temp->height;
@@ -269,10 +267,8 @@ void freeTree(Node* root) {
 }
 
 void processCommand(char* input, AVLTree* tree) {
-    // Remove newline character
     input[strcspn(input, "\n")] = '\0';
     
-    // Parse command
     char command[20];
     char argument[1024];
     
