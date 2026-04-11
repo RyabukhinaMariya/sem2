@@ -2,24 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-typedef struct Edge {
-    int to;
-    int length;
-    struct Edge* next;
-} Edge;
-
-typedef struct QueueElement {
-    int distance;
-    int city;
-    int state;
-} QueueElement;
-
-typedef struct PriorityQueue {
-    QueueElement* data;
-    int size;
-    int capacity;
-} PriorityQueue;
-
 void initQueue(PriorityQueue* pq, int capacity) {
     pq->data = (QueueElement*)malloc(capacity * sizeof(QueueElement));
     pq->size = 0;
