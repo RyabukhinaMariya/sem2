@@ -2,18 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-typedef struct Node {
-    char iataCode[4];
-    char name[1024];
-    struct Node* left;
-    struct Node* right;
-    int height;
-} Node;
-
-typedef struct AVLTree {
-    Node* root;
-} AVLTree;
-
 Node* createNode(char* code, char* name) {
     Node *newNode = malloc(sizeof(Node));
     if (newNode == NULL) {
