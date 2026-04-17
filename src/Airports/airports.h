@@ -4,28 +4,30 @@
 typedef struct Node {
     char iataCode[4];
     char name[1024];
-    struct Node* left;
-    struct Node* right;
+    struct Node *left;
+    struct Node *right;
     int height;
 } Node;
 
-typedef struct AVLTree {
-    Node* root;
+typedef struct {
+    Node *root;
 } AVLTree;
 
-Node* createNode(char* code, char* name);
-int getHeight(Node* node);
-int getBalance(Node* node);
+// tree functions
+int getHeight(Node* n);
 int max(int a, int b);
-void updateHeight(Node* node);
-Node* rotateLeft(Node* a);
+int getBalance(Node* n);
+void updateHeight(Node* n);
 Node* rotateRight(Node* a);
-Node* insertNode(Node* root, char* code, char* name);
-Node* findMinNode(Node* root);
+Node* rotateLeft(Node* a);
+Node* createNode(char* code, char* name);
 Node* balanceNode(Node* root);
+Node* insertNode(Node* root, char* code, char* name);
 Node* deleteNode(Node* root, char* code);
 Node* findNode(char* code, Node* root);
+void freeTree(Node* root);
+
+// input/output functions
 void printAirportName(char* code, Node* root);
 void saveToFile(Node* root, FILE* file);
-void freeTree(Node* root);
 void processCommand(char* input, AVLTree* tree);
