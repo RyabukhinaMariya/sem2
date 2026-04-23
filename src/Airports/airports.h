@@ -29,7 +29,6 @@ Node *findMinNode(Node *root);
 Node *findNode(char *code, Node *root);
 void freeTree(Node *root);
 
-// I/O functions
 void printAirportName(char *code, Node *root);
 void saveToFile(Node *root, FILE *file);
 void processCommand(char *input, AVLTree *tree);
