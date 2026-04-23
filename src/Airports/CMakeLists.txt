@@ -1,8 +1,12 @@
 cmake_minimum_required(VERSION 3.13)
-project(AIRPORTS C)
+project(pretty_printer C)
 
-add_executable(
-    airports.c
+add_executable(pretty_printer
+    main.c
+    airports.h
+    avlTree.c
+    commands.c
+    tests.c
 )
 
-target_compile_options(airports PUBLIC -Wall -Wextra -Wpedantic)
+target_compile_options(pretty_printer PUBLIC -Wall -Wextra -Wpedantic)
