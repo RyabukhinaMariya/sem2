@@ -12,8 +12,10 @@ int main() {
 
   if (!input || !output) {
     perror("cannot open the files");
-    if (input) fclose(input);
-    if (output) fclose(output);
+    if (input)
+      fclose(input);
+    if (output)
+      fclose(output);
     return 1;
   }
 
@@ -29,7 +31,8 @@ int main() {
 
   printSeparatorLine(output, config);
   while (fgets(line, sizeof(line), input)) {
-    if (strlen(line) <= 1) continue;
+    if (strlen(line) <= 1)
+      continue;
 
     printRow(output, line, config, DELIMITER);
     printSeparatorLine(output, config);
