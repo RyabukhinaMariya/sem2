@@ -113,6 +113,25 @@ Node *insertNode(Node *root, char *code, char *name) {
   return root;
 }
 
+Node *findNode(char *code, Node *root) {
+  if (!root)
+    return NULL;
+
+  int cmp = strcmp(code, root->iataCode);
+  if (cmp < 0)
+    return findNode(code, root->left);
+  else if (cmp > 0)
+    return findNode(code, root->right);
+  else
+    return root;
+}
+
+Node *findMinNode(Node *root) {
+  if (!root || !root->left)
+    return root;
+  return findMinNode(root->left);
+}
+
 Node *deleteNode(Node *root, char *code) {
   if (root == NULL) {
     printf("Code %s not found for deletion\n", code);
