@@ -1,14 +1,11 @@
 #include "airports.h"
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-int getHeight(Node *n) {
-  return n ? n->height : 0;
-}
+int getHeight(Node *n) { return n ? n->height : 0; }
 
-int max(int a, int b) {
-  return (a > b) ? a : b;
-}
+int max(int a, int b) { return (a > b) ? a : b; }
 
 int getBalance(Node *n) {
   return n ? getHeight(n->left) - getHeight(n->right) : 0;
