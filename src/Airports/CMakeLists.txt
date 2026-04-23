@@ -1,15 +1,15 @@
 cmake_minimum_required(VERSION 3.13)
-project(pretty_printer C)
+project(airports C)
 
 add_executable(program
     main.c
-    airports_io.c
+    commands.c
     avlTree.c
 )
 
 add_executable(tests
     tests.c
-    airports_io.c
+    commands.c
     avlTree.c
 )
 
