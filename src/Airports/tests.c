@@ -1,8 +1,7 @@
 #include "airports.h"
 #include <stdio.h>
 
-void testInsertAndFind(void)
-{
+void testInsertAndFind(void) {
     printf("Test insert and find\n");
     AVLTree* tree = createAVL();
 
@@ -14,8 +13,7 @@ void testInsertAndFind(void)
     freeAVL(tree);
 }
 
-void testDelete(void)
-{
+void testDelete(void) {
     printf("Test Simple Delete\n");
     AVLTree* tree = createAVL();
 
@@ -31,8 +29,7 @@ void testDelete(void)
     freeAVL(tree);
 }
 
-void testGeneral(void)
-{
+void testGeneral(void) {
     printf("Test Interface\n");
     char* testFile = "airports.txt";
 
@@ -63,8 +60,7 @@ void testGeneral(void)
     remove(outputFile);
 }
 
-void runTests(void)
-{
+void runTests(void) {
     testInsertAndFind();
     testDelete();
     testGeneral();
