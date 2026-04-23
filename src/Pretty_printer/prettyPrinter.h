@@ -1,5 +1,5 @@
 #ifndef PRETTY_PRINTER_H
-#define PRINTY_PRINTER_H
+#define PRETTY_PRINTER_H
 
 #include <stdio.h>
 
