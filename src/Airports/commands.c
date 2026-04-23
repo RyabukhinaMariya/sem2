@@ -36,8 +36,9 @@ void processCommand(char *input, AVLTree *tree) {
     if (colon) {
       int len = colon - argument;
       strncpy(code, argument, len > 3 ? 3 : len);
-      code[len > 3 ? 3 : len] = '\0';
+      code[(len > 3) ? 3 : len] = '\0';
       strncpy(name, colon + 1, 1023);
+      name[1023] = '\0';
       tree->root = insertNode(tree->root, code, name);
     }
   } else if (strcmp(command, "save") == 0) {
