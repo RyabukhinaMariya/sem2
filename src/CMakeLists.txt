@@ -3,6 +3,7 @@ project(kingdoms C)
 add_executable(pretty_printer
     states.c
     states.h
+    tests.c
 )
 
 target_compile_options(pretty_printer PUBLIC -Wall -Wextra -Wpedantic)
