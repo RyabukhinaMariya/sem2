@@ -12,7 +12,7 @@ void addEdge(Edge **graph, int u, int v, int len) {
 }
 
 int main() {
-    FILE *file = fopen("airports.txt", "r");
+    FILE *file = fopen("kingdoms.txt", "r");
     if (!file)
         return 1;
 
