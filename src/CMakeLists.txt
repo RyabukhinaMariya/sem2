@@ -1,8 +1,7 @@
 cmake_minimum_required(VERSION 3.13)
 project(kingdoms C)
 add_executable(pretty_printer
-    main.c
-    queue.c
+    states.c
     states.h
 )
 
