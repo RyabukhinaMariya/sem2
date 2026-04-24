@@ -1,8 +1,9 @@
 cmake_minimum_required(VERSION 3.13)
-project(KINDOMS C)
-
-add_executable(
-    kindoms.c
+project(kingdoms C)
+add_executable(pretty_printer
+    main.c
+    queue.c
+    kingdoms.h
 )
 
-target_compile_options(kindoms PUBLIC -Wall -Wextra -Wpedantic)
+target_compile_options(pretty_printer PUBLIC -Wall -Wextra -Wpedantic)
